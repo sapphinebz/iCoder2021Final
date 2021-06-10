@@ -1,0 +1,50 @@
+<div class="condition_container">
+   <span>
+       ชื่อ:
+       <input [formControl]="nameFormControl" type="text" pInputText />
+   </span> 
+   <span>
+       อีเมล:
+       <input [formControl]="emailFormControl" type="text" pInputText />
+   </span> 
+   <span>
+       โทรศัพท์:
+       <input [formControl]="telFormControl" type="text" pInputText />
+   </span> 
+
+</div>
+<div class="condition_container">
+    <button (click)="queryStudent()" pButton pRipple type="button" icon="pi pi-search" label="ค้นหา" 
+    class="p-button-rounded"></button>
+    <button (click)="resetStudent()" pButton pRipple type="button" icon="pi pi-refresh" label="ยกเลิก" class="p-button-rounded"></button>
+    
+</div>
+<div class="condition_container" style="justify-content: flex-end;">
+    <button [routerLink]="['/add']" pButton pRipple icon="pi pi-plus-circle" type="button" label="เพิ่ม" class="p-button-rounded"></button>
+
+</div>
+<div class="condition_container">
+    <p-table [value]="students" 
+    [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th style="width:10%"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+            <tr>
+                <td>{{student.name}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.tel}}</td>
+                <td>
+                    <p-button (onClick)="editStudent(student)" icon="pi pi-pencil"></p-button>
+                    <p-button (onClick)="deleteStudent(student)" icon="pi pi-trash" styleClass="p-button-danger"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>

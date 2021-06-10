@@ -1,0 +1,35 @@
+
+<section  class="center_container">
+    <div class="editable_container">
+        <div class="condition_container">
+            <span>
+                ชื่อ:
+                <input [formControl]="nameFormControl"  type="text" pInputText />
+                <p-message *ngIf="nameFormControl.dirty && nameFormControl.invalid" severity="error" text="Field is required"></p-message>
+            </span> 
+        </div>
+        <div class="condition_container">
+            <span>
+                อีเมล:
+                <input [formControl]="emailFormControl" type="text" pInputText />
+                <p-message *ngIf="emailFormControl.hasError('required') && emailFormControl.dirty && emailFormControl.invalid" severity="error" text="Field is required"></p-message>
+                <p-message *ngIf="emailFormControl.hasError('email') && emailFormControl.dirty && emailFormControl.invalid" severity="error" text="Email is invalid"></p-message>
+            </span> 
+        </div>
+        <div class="condition_container">
+            <span>
+                โทรศัพท์:
+                <input [formControl]="telFormControl" type="text" pInputText />
+                <p-message *ngIf="telFormControl.dirty && telFormControl.invalid" severity="error" text="Field is required"></p-message>
+
+            </span> 
+        </div>
+    </div>
+    <div class="condition_container">
+        <button [disabled]="editStudentFormGroup.invalid"  (click)="updateStudent()" pButton pRipple type="button" icon="pi pi-save" label="บันทึก" 
+        class="p-button-rounded"></button>
+        <button (click)="resetStudent()" pButton pRipple type="button" icon="pi pi-refresh" label="ล้างค่า" 
+        class="p-button-rounded"></button>
+        <button [routerLink]="['/student']" pButton pRipple type="button" icon="pi pi-angle-left" label="ย้อนกลับ" class="p-button-rounded"></button>
+    </div>
+</section>
